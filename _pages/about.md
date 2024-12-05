@@ -2,14 +2,13 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='#'>University of Pennsylvania</a>. <a href='haoyund@sas.upenn.edu'>haoyund@sas.upenn.edu</a>
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: wendy.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>267-699-6072</p>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
