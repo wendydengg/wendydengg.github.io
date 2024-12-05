@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>University of Pennsylvania</a>. 
+subtitle: <a href='#'>University of Pennsylvania</a>.
 
 profile:
   align: right
