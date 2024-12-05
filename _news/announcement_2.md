@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Central High School, graduated with an honorary Bachelor of Arts degree
-date: 2017 00:00:00-0400
+date: 2021-05-12 15:59:00-0400
 inline: false
 related_posts: false
 ---
