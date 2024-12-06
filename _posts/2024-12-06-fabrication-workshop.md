@@ -2,7 +2,7 @@
 layout: post
 title: Web-Scraping Workshop
 date: 2024-09-024 00:32:13
-description: Reflection on visualizing history using a laser cutter
+description: Summary of an Introduction to Web Scraping Workshop at the Research Data & Digital Scholarship (RDDS) Exchange at Van Pelt 
 tags: Digital Humanities
 categories:
 tabs: true
