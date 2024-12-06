@@ -1,83 +1,50 @@
 ---
 layout: post
-title: Fabrication Workshop
-date: 2024-12-06 00:32:13
+title: Web-Scraping Workshop
+date: 2024-09-024 00:32:13
 description: Reflection on visualizing history using a laser cutter
 tags: Digital Humanities
 categories:
 tabs: true
 ---
 
-Over the past two weeks, we brainstormed on ways to represent data in the Umpire through a laser cutter.
+Web scraping is a common tool used to quickly and efficiently extract large amounts of data from websites. I attended the Introduction to Web Scraping Workshop by Stephen Hall, a Computer Science librarian at the Research Data & Digital Scholarship (RDDS) Exchange at Van Pelt, introduced us to the Python package BeautifulSoup and some precautions to keep in mind before doing any web-scraping on the website. 
 
-## Brainstorm Sessions
 
-Given the mass amount of data regarding the Umpire, it is difficult to determine a concise definition and meaning by first glance. Since each entry in our dataset is categorized by topics such as baseball, ESP league, and religion, we analyzed each topic in depth and decided to focus on religion because we were interested in ways that prisoners remained hopeful during times of loneliness and despair. Another reason is that we already know baseball is a recurring theme in the Umpire, so we wanted to bring a new perspective. Thus, our goal was to use a laser cutter to create a physical, tangible representation of religion in the Umpire. The resulting product was a histogram of the frequency of religious words in the Umpire sitting on top of a birds’ eye view of the ESP, the corresponding words for the frequencies were also inscribed onto the histogram.
+## Before Web-Scraping
 
-## Design and Implementation of Project
+He started off the presentation by reminding us of the dangers and precautions to keep in mind when doing web-scraping. Specifically, we need to check the terms and services file to see if the owner of the site permits web-scraping. If that is not available, we can inspect the site’s robots.txt file (which is meant to be machine-readable but can also be checked by humans) that tells web crawlers what their permissions are. For example, the New York Times does not allow web-scraping of any of their articles. Web-scraping in itself is not an illegal task, but if done so without the permission of the site owners, it is possible to get into a lot of legal troubles. This is especially an issue when web-scraping is done illegally and dangerously for users with bad intentions as they can introduce a lot of problems to the site owners. For instance, university resources are not allowed to be scrapped because vendors of the universities monitor their sites and will ban the university’s IP address if suspicious activities are found. The bottom line is that if you are unsure about the permissions of a site, don’t perform web-scraping. Below is a list of other key considerations when performing web-scraping: 
 
-We met multiple times in the EC and Zoom to discuss and complete this project, and everyone was able to contribute meaningfully to each session due to the role specifications. One of our initial ideas was to create a word cloud out of the frequencies of religious words mentioned in the Umpire, but the resulting prototyped image ended up being too crowded and not aesthetically appealing, not to mention that it would be vert difficult for the laser cutter to replicate such a vision. By iterating through ideas and prototypes and discussing pros and cons of each, we narrowed our final idea down to having a histogram with each bar engraved with its corresponding word related to religion.
+- Had the owner made it publicly and freely available? (if it is behind a paywall, then no)
+- An account is not required to access the data
+- The website should not block scrapers
+- Issues of copyright infringement and plagiarism
+- How are we using the data?
+- Does it have an API? Cuz we should use that instead
+- Most of the sites we wanna scrape… we can’t
+- Penn has an intellectual property manager to handle these types of issues
+	
 
-The acrylic material for the histogram had a reflective finish, so we had another idea to print a poem witten in the ESP as the base of the histogram -- a symbol that religious beliefs create a stable foundation for the inmates. However, laser cutting words would again be difficult to achieve, so we ultimately decided to etch a map of the ESP as the base of the histogram to symbolize that the historical information we used emerged from the grounds of the prison.
+## Technical Details
 
-During the presentation, we asked our viewers to be able to see their face reflected in the histogram on the other side of where the words were engraved so that the color-changing property of our acrylic material reflects the dynamism of faith itself.
+As for the technical details, web-scraping is simply a form of regular expression matching. Regular expressions are a sequence of characters that specifies a pattern to search for in text. It is the backbone of most “find and replace” algorithms, including Ctrl-F. We then performed some simple regex queries over a toy website called https://books.toscrape.com. Below are some examples of regex matching syntax:
 
-## Digital Asset Manager
+- '*' looks for preceding character 0 or more times
+ab*c (a and c with any number of b in b/t)
+- '+' looks for preceding character 1 or more times
+ab*c (a and c with at least one b in b/t)
+- '.' wildcard character 
+a.c (a and c with any single character in b/t)
+- '?' preceding character may or may not be present in string 
+docx (doc and docx)
+- '\d' matches any digit character
+- '\s' matches any whitespace character
+- '[...]{#}' matches any character in a range, with # number of characters back-to-back
+- '[A-Za-z0-9]' any character between A to Z, any b/t a to z, any b/t 0 to 9
+- '()' sub-catch returns only stuff in that parenthesis, but need to specify which group # in group(#)
 
-As the Digital Asset Manager, I was present in all meetings in order to provide data analysis. For example, I wrote the code for counting the number of religion-related words using regex, and I also generated the word cloud and histogram.
+## Digital Humanities Application
+I can see this skill being extremely useful for digital humanities projects, where the historical data is scattered around the web and requires manual checking of the text to ensure validity. For example, if we want to find more data regarding inmates in the Eastern State Penitentiary (ESP), which is sparsely available, we can perform web-scraping over websites that contain all possible information about inmates in Philadelphia and narrow down to those who lived in the ESP. 
+Thank you to the RDDS team at Van Pelt!
 
-![Word Cloud](assets/img/word_cloud.png)  
-![Histogram](assets/img/histogram.png)
 
-```python
-import pandas as pd
-import re
-import nltk
-from nltk.corpus import stopwords
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-from collections import Counter
-
-nltk.download('stopwords')
-data = pd.read_csv('data.csv')
-all_text = ' '.join(data['text'].dropna())
-
-words = re.findall(r'\b[a-zA-Z]+\b', all_text.lower())
-
-stop_words = set(stopwords.words('english'))
-filtered_words = [word for word in words if word not in stop_words]
-
-religion_pattern = re.compile(r'\b(god|faith|church|bible|prayer|spiritual|religion|holy|worship|christian|muslim|islam|hindu|buddhist|jewish|temple|synagogue|mosque|sacred|divine|belief|ritual|soul|heaven|hell|angel|sin)\b')
-
-religion_words = [word for word in filtered_words if religion_pattern.search(word)]
-
-word_counts = Counter(religion_words)
-
-print("Religion-Related Words and Their Frequencies:")
-for word, frequency in word_counts.items():
-    print(f"{word}: {frequency}")
-
-wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_counts)
-
-plt.figure(figsize=(10, 5))
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis('off')
-plt.title("Religion-Related Word Cloud")
-plt.show()
-```
-
-```python
-import matplotlib.pyplot as plt
-
-words = ['Repent', 'Forgive', 'Faith', 'Devotion', 'Remorse', 'God', 'Sin']
-frequencies = [12, 42, 153, 18, 12, 130, 60]
-
-plt.figure(figsize=(10, 6))
-plt.bar(words, frequencies, color='skyblue')
-
-plt.title('Frequency of Religion-Related Words')
-plt.xlabel('Words')
-plt.ylabel('Frequency')
-
-plt.show()
-```
