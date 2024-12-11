@@ -26,8 +26,8 @@ During the presentation, we asked our viewers to be able to see their face refle
 
 As the Digital Asset Manager, I was present in all meetings in order to provide data analysis. For example, I wrote the code for counting the number of religion-related words using regex, and I also generated the word cloud and histogram.
 
-![Word Cloud](assets/img/word_cloud.png)  
-![Histogram](assets/img/histogram.png)
+![Word Cloud](word_cloud.png)  
+![Histogram](histogram.png)
 
 ```python
 import pandas as pd
