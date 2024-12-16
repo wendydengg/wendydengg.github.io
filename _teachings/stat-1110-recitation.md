@@ -1,6 +1,6 @@
 ---
 layout: page
-title: STAT 1110 
+title: STAT 1110
 description:
 img: assets/img/stat-1110-recitation.jpg
 importance: 1

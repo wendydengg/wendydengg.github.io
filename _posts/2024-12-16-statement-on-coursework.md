@@ -2,7 +2,7 @@
 layout: post
 title: Statement on Coursework
 date: 2024-12-16 00:32:13
-description: 
+description:
 tags: Digital_Humanities
 categories:
 tabs: true
