@@ -199,6 +199,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:title/
+  teachings:
+    output: true
+    permalink: /:collection/:title/
 
 announcements:
   enabled: true
@@ -649,3 +652,7 @@ jsonresume:
   - languages
   - interests
   - references
+
+image_processing:
+  resize_to_limit: [1400, 800]
+  quality: 90

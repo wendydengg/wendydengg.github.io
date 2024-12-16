@@ -1,16 +1,18 @@
 ---
 layout: page
-permalink: /projects/
-title: projects
-description: What I am proud of 
+permalink: /teachings/
+title: teachings
+description: Course and Recitation Materials
 nav: true
-nav_order: 3
-display_categories: [work, fun]
-horizontal: false
+nav_order: 6
 ---
 
-<!-- pages/projects.md -->
-<div class="projects">
+<!--
+For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+
+Organize your courses by years, topics, or universities, however you like! -->
+
+<div class="teachings">
 {% if site.enable_project_categories and page.display_categories %}
   <!-- Display categorized projects -->
   {% for category in page.display_categories %}
@@ -39,9 +41,7 @@ horizontal: false
 
 {% else %}
 
-<!-- Display projects without categories -->
-
-{% assign sorted_projects = site.projects | sort: "importance" %}
+{% assign sorted_projects = site.teachings | sort: "importance" %}
 
   <!-- Generate cards for each project -->
 

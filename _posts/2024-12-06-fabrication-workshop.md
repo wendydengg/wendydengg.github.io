@@ -3,31 +3,29 @@ layout: post
 title: Fabrication Workshop
 date: 2024-12-06 00:32:13
 description: Reflection on visualizing history using a laser cutter
-tags: Digital Humanities
+tags: Digital_Humanities
 categories:
 tabs: true
 ---
 
 Over the past two weeks, we brainstormed on ways to represent data in the Umpire through a laser cutter.
 
-## Brainstorm Sessions
-
 Given the mass amount of data regarding the Umpire, it is difficult to determine a concise definition and meaning by first glance. Since each entry in our dataset is categorized by topics such as baseball, ESP league, and religion, we analyzed each topic in depth and decided to focus on religion because we were interested in ways that prisoners remained hopeful during times of loneliness and despair. Another reason is that we already know baseball is a recurring theme in the Umpire, so we wanted to bring a new perspective. Thus, our goal was to use a laser cutter to create a physical, tangible representation of religion in the Umpire. The resulting product was a histogram of the frequency of religious words in the Umpire sitting on top of a birds’ eye view of the ESP, the corresponding words for the frequencies were also inscribed onto the histogram.
 
-## Design and Implementation of Project
-
-We met multiple times in the EC and Zoom to discuss and complete this project, and everyone was able to contribute meaningfully to each session due to the role specifications. One of our initial ideas was to create a word cloud out of the frequencies of religious words mentioned in the Umpire, but the resulting prototyped image ended up being too crowded and not aesthetically appealing, not to mention that it would be vert difficult for the laser cutter to replicate such a vision. By iterating through ideas and prototypes and discussing pros and cons of each, we narrowed our final idea down to having a histogram with each bar engraved with its corresponding word related to religion.
+We met multiple times in the EC and on Zoom to discuss and complete this project, and everyone was able to contribute meaningfully to each session due to the role specifications. One of our initial ideas was to create a word cloud out of the frequencies of religious words mentioned in the Umpire, but the resulting prototyped image ended up being too crowded and not aesthetically appealing, not to mention that it would be vert difficult for the laser cutter to replicate such a vision. By iterating through ideas and prototypes and discussing pros and cons of each, we narrowed our final idea down to having a histogram with each bar engraved with its corresponding word related to religion.
 
 The acrylic material for the histogram had a reflective finish, so we had another idea to print a poem witten in the ESP as the base of the histogram -- a symbol that religious beliefs create a stable foundation for the inmates. However, laser cutting words would again be difficult to achieve, so we ultimately decided to etch a map of the ESP as the base of the histogram to symbolize that the historical information we used emerged from the grounds of the prison.
 
 During the presentation, we asked our viewers to be able to see their face reflected in the histogram on the other side of where the words were engraved so that the color-changing property of our acrylic material reflects the dynamism of faith itself.
 
-## Digital Asset Manager
+As the Digital Asset Manager, I was present in all meetings in order to provide data analysis. For example, I wrote the code for counting the number of religion-related words using regex, and I also generated the word cloud and histogram as shown below:
 
-As the Digital Asset Manager, I was present in all meetings in order to provide data analysis. For example, I wrote the code for counting the number of religion-related words using regex, and I also generated the word cloud and histogram.
+<div style="display: flex; justify-content: space-between; gap: 20px;">
+    <img src="/assets/img/word_cloud.jpg" alt="Word Cloud" style="width: 48%; height: auto;">
+    <img src="/assets/img/histogram.jpg" alt="Histogram" style="width: 48%; height: auto;">
+</div>
 
-![Word Cloud](word_cloud.png)  
-![Histogram](histogram.png)
+And here is the code that I used to create the graphs above:
 
 ```python
 import pandas as pd

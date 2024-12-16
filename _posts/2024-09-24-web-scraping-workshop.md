@@ -3,7 +3,7 @@ layout: post
 title: Web-Scraping Workshop
 date: 2024-09-24 00:32:13
 description: Summary of an Introduction to Web Scraping Workshop at the Research Data & Digital Scholarship (RDDS) Exchange at Van Pelt
-tags: Digital Humanities
+tags: Digital_Humanities
 categories:
 tabs: true
 ---
