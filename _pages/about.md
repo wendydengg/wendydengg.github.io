@@ -6,7 +6,7 @@ subtitle: <a href='#'>University of Pennsylvania</a>.
 
 profile:
   align: right
-  image: wendy.jpg
+  image: ~/GitHub/wendydengg.github.io/assets/img/wendy.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
 
